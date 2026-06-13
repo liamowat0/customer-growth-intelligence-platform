@@ -1,10 +1,16 @@
 # Executive KPI Analysis
 
 1. What is total revenue?
-2. How many orders were placed?
-3. How many unique customers exist?
-4. What is average order value?
-5. What is monthly revenue growth?
+    $16,008,872.12
+3. How many orders were placed?
+   99,441
+5. How many unique customers exist?
+   96,096
+7. What is average order value?
+   $154.10
+8. What is the data range?
+   Sep. 4th, 2016 9:15:19 PM to Oct. 17th, 2018 5:30:18 PM
+10. What is monthly revenue growth?
 
 # Customer Analysis
 
