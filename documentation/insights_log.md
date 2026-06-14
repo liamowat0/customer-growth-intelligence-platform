@@ -411,6 +411,28 @@ FROM orders
 WHERE order_delivered_customer_date IS NOT NULL;
 ```
 
+```sql
+SELECT
+
+ROUND(
+    100 *
+    SUM(
+        CASE
+            WHEN order_delivered_customer_date >
+                 order_estimated_delivery_date
+            THEN 1
+            ELSE 0
+        END
+    ) /
+    COUNT(*),
+    2
+) AS late_delivery_rate
+
+FROM orders
+
+WHERE order_delivered_customer_date IS NOT NULL;
+```
+
 ### Business Question
 
 How effectively does the company deliver orders on time?
