@@ -276,3 +276,71 @@ Prioritize retention initiatives aimed at:
 - Developing personalized marketing campaigns for high-value customers
 
 Future analysis should evaluate whether delivery performance, product categories, customer reviews, or geographic factors influence customer retention.
+
+
+## Cohort Retention Analysis
+
+### Business Question
+
+How effectively does the business retain customers after their initial purchase?
+
+### Methodology
+
+Customers were grouped into acquisition cohorts based on the month of their first purchase.
+
+Subsequent purchases were tracked over time to measure customer retention.
+
+### Findings
+
+Customer acquisition grew rapidly throughout 2017 and stabilized during 2018.
+
+Across nearly all cohorts, fewer than 1% of customers returned to make another purchase within the following month.
+
+Examples:
+
+- January 2017: 764 customers acquired, 3 returned after one month
+- November 2017: 7,304 customers acquired, 40 returned after one month
+- April 2018: 6,711 customers acquired, 39 returned after one month
+
+### Business Insight
+
+The business demonstrates strong customer acquisition performance but extremely weak customer retention.
+
+Nearly all customer cohorts experience significant drop-off immediately following the first purchase.
+
+This finding is consistent with previous retention and RFM analyses, suggesting that long-term growth is heavily dependent on acquiring new customers rather than retaining existing ones.
+
+### Recommendation
+
+Investigate:
+
+- Product category retention differences
+- Customer satisfaction drivers
+- Loyalty program opportunities
+- Post-purchase engagement strategies
+- Repeat purchase incentives
+
+Improving second-purchase conversion rates should be a strategic priority.
+
+
+## Delivery Performance Analysis
+
+### Business Question
+
+How effectively does the company deliver orders on time?
+
+### SQL Findings
+
+- Total Orders: 99,441
+- Late Orders: 7,827
+- Late Delivery Rate: 7.87%
+
+### Business Insight
+
+Operational performance appears strong, with more than 92% of orders delivered on or before the estimated delivery date.
+
+The relatively low late-delivery rate suggests that fulfillment operations are generally effective and unlikely to be the primary cause of poor customer retention.
+
+### Recommendation
+
+Further analysis should investigate whether customer retention challenges are driven by factors other than delivery performance, including product quality, customer expectations, category-specific purchasing behavior, or competitive market dynamics.
