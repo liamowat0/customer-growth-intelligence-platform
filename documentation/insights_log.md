@@ -163,3 +163,62 @@ Focus future analysis on:
 - Cross-selling opportunities between top-performing categories
 
 Prioritize marketing and inventory investments toward categories that demonstrate both high revenue and consistent demand.
+
+
+## Customer Retention Analysis
+
+### Business Question
+
+How many customers place repeat orders?
+
+### SQL
+
+```sql
+SELECT
+    order_count,
+    COUNT(*) AS customers
+FROM (
+    SELECT
+        c.customer_unique_id,
+        COUNT(o.order_id) AS order_count
+    FROM customers c
+    JOIN orders o
+        ON c.customer_id = o.customer_id
+    GROUP BY c.customer_unique_id
+) customer_orders
+GROUP BY order_count
+ORDER BY order_count;
+```
+
+### Finding
+
+Customer purchase frequency distribution:
+
+- 93,099 customers placed 1 order
+- 2,745 customers placed 2 orders
+- 203 customers placed 3 orders
+- 49 customers placed 4 or more orders
+
+Approximately 96.9% of customers made only one purchase.
+
+Only 3.1% of customers placed multiple orders.
+
+### Business Insight
+
+Customer retention appears to be very low, with the overwhelming majority of customers making a single purchase before becoming inactive.
+
+This suggests that business growth is driven primarily by customer acquisition rather than repeat purchasing behavior.
+
+The company may be missing significant opportunities to increase customer lifetime value through retention and loyalty initiatives.
+
+### Recommendation
+
+Investigate factors influencing customer retention, including:
+
+- Customer satisfaction and review scores
+- Product category purchasing behavior
+- Delivery performance
+- Geographic differences in retention
+- Customer segmentation
+
+Develop retention-focused strategies such as loyalty programs, targeted promotions, and post-purchase engagement campaigns to increase repeat purchasing rates.
