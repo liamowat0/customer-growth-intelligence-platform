@@ -108,3 +108,58 @@ Investigate the drivers behind the 2017 growth period by analyzing:
 - Repeat customer behavior
 
 Additionally, analyze seasonal sales patterns and promotional effectiveness to determine whether holiday-driven growth opportunities can be replicated in future periods.
+
+
+
+## Top Product Categories by Revenue
+
+### Business Question
+
+Which product categories generate the most revenue?
+
+### SQL
+
+```sql
+SELECT
+    p.product_category_name AS category,
+    ROUND(SUM(oi.price),2) AS revenue,
+    COUNT(DISTINCT oi.order_id) AS orders
+FROM order_items oi
+JOIN products p
+    ON oi.product_id = p.product_id
+GROUP BY p.product_category_name
+ORDER BY revenue DESC
+LIMIT 15;
+```
+
+### Finding
+
+The highest revenue-generating product categories were:
+
+- Health & Beauty: $1.26M
+- Watches & Gifts: $1.21M
+- Bed, Bath & Table: $1.04M
+- Sports & Leisure: $988K
+- Computer Accessories: $912K
+
+Several home-related categories also ranked among the top performers, including furniture, home utilities, and office furniture.
+
+### Business Insight
+
+Revenue is concentrated among a relatively small number of product categories, indicating that category management plays a significant role in overall business performance.
+
+Home and lifestyle products represent a major portion of revenue, suggesting a strong market position within those segments.
+
+Higher-value categories such as watches, gifts, and computer accessories likely contribute to the company's above-average order value.
+
+### Recommendation
+
+Focus future analysis on:
+
+- Category profitability
+- Customer purchasing behavior by category
+- Category-specific retention rates
+- Seasonal category performance
+- Cross-selling opportunities between top-performing categories
+
+Prioritize marketing and inventory investments toward categories that demonstrate both high revenue and consistent demand.
