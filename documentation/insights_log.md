@@ -222,3 +222,57 @@ Investigate factors influencing customer retention, including:
 - Customer segmentation
 
 Develop retention-focused strategies such as loyalty programs, targeted promotions, and post-purchase engagement campaigns to increase repeat purchasing rates.
+
+
+## Customer Segmentation (RFM Analysis)
+
+### Business Question
+
+Which customer segments drive the business, and where are retention opportunities?
+
+### Methodology
+
+Customers were segmented using:
+
+- Recency (days since last purchase)
+- Frequency (number of orders)
+- Monetary Value (total spending)
+
+Segments were defined as:
+
+- Champions
+- Loyal Customers
+- Big Spenders
+- At Risk Customers
+- One-Time Customers
+
+### Findings
+
+| Segment | Customers |
+|----------|----------:|
+| One-Time Customers | 63,047 |
+| At Risk | 26,045 |
+| Big Spenders | 3,897 |
+| Loyal Customers | 355 |
+| Champions | 13 |
+
+### Business Insight
+
+The customer base is heavily concentrated among one-time purchasers and inactive customers.
+
+More than 95% of customers fall into either the One-Time Customer or At Risk segments.
+
+Only 368 customers qualify as Loyal Customers or Champions, indicating a very small core customer base.
+
+The business appears highly dependent on customer acquisition rather than long-term customer retention.
+
+### Recommendation
+
+Prioritize retention initiatives aimed at:
+
+- Re-engaging At Risk customers
+- Increasing second-purchase conversion rates
+- Creating loyalty and rewards programs
+- Developing personalized marketing campaigns for high-value customers
+
+Future analysis should evaluate whether delivery performance, product categories, customer reviews, or geographic factors influence customer retention.
