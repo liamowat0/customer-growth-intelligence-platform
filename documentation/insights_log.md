@@ -452,3 +452,68 @@ The relatively low late-delivery rate suggests that fulfillment operations are g
 ### Recommendation
 
 Further analysis should investigate whether customer retention challenges are driven by factors other than delivery performance, including product quality, customer expectations, category-specific purchasing behavior, or competitive market dynamics.
+
+
+## Customer Satisfaction & Delivery Performance
+
+### Business Question
+
+Does delivery performance impact customer satisfaction?
+
+### SQL
+
+```sql
+SELECT
+
+CASE
+    WHEN o.order_delivered_customer_date >
+         o.order_estimated_delivery_date
+    THEN 'Late'
+
+    ELSE 'On Time'
+END AS delivery_status,
+
+ROUND(
+    AVG(r.review_score),
+    2
+) AS avg_review_score,
+
+COUNT(*) AS reviews
+
+FROM orders o
+
+JOIN reviews r
+    ON o.order_id = r.order_id
+
+WHERE o.order_delivered_customer_date IS NOT NULL
+
+GROUP BY delivery_status;
+```
+
+### Findings
+
+| Delivery Status | Avg Review Score | Reviews |
+|----------|----------:|----------:|
+| On Time | 4.21 | 91,523 |
+| Late | 2.57 | 7,701 |
+
+Late deliveries received review scores that were 1.64 stars lower on average than on-time deliveries.
+
+### Business Insight
+
+Customer satisfaction is strongly associated with delivery performance.
+
+Although only 7.87% of deliveries were late, customers experiencing late deliveries reported substantially lower review scores.
+
+This suggests that operational performance directly impacts customer experience and may contribute to the company's broader retention challenges.
+
+### Recommendation
+
+Prioritize reducing late deliveries through:
+
+- Carrier performance monitoring
+- Logistics optimization
+- Inventory planning improvements
+- Proactive customer communication during delays
+
+Future analysis should evaluate whether customers who experience late deliveries are less likely to make repeat purchases.
