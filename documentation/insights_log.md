@@ -280,6 +280,71 @@ Future analysis should evaluate whether delivery performance, product categories
 
 ## Cohort Retention Analysis
 
+### SQL
+
+```sql
+WITH customer_cohorts AS (
+
+SELECT
+    c.customer_unique_id,
+
+    DATE_FORMAT(
+        MIN(o.order_purchase_timestamp),
+        '%Y-%m'
+    ) AS cohort_month
+
+FROM customers c
+
+JOIN orders o
+    ON c.customer_id = o.customer_id
+
+GROUP BY c.customer_unique_id
+
+),
+
+customer_activity AS (
+
+SELECT
+    c.customer_unique_id,
+
+    DATE_FORMAT(
+        o.order_purchase_timestamp,
+        '%Y-%m'
+    ) AS activity_month
+
+FROM customers c
+
+JOIN orders o
+    ON c.customer_id = o.customer_id
+
+)
+
+SELECT
+
+cc.cohort_month,
+
+TIMESTAMPDIFF(
+    MONTH,
+    STR_TO_DATE(CONCAT(cc.cohort_month,'-01'),'%Y-%m-%d'),
+    STR_TO_DATE(CONCAT(ca.activity_month,'-01'),'%Y-%m-%d')
+) AS month_number,
+
+COUNT(DISTINCT cc.customer_unique_id) AS customers
+
+FROM customer_cohorts cc
+
+JOIN customer_activity ca
+    ON cc.customer_unique_id = ca.customer_unique_id
+
+GROUP BY
+    cohort_month,
+    month_number
+
+ORDER BY
+    cohort_month,
+    month_number;
+```
+
 ### Business Question
 
 How effectively does the business retain customers after their initial purchase?
@@ -324,6 +389,27 @@ Improving second-purchase conversion rates should be a strategic priority.
 
 
 ## Delivery Performance Analysis
+
+### SQL
+
+```sql
+SELECT
+
+COUNT(*) AS total_orders,
+
+SUM(
+    CASE
+        WHEN order_delivered_customer_date >
+             order_estimated_delivery_date
+        THEN 1
+        ELSE 0
+    END
+) AS late_orders
+
+FROM orders
+
+WHERE order_delivered_customer_date IS NOT NULL;
+```
 
 ### Business Question
 
