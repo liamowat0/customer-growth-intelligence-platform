@@ -60,3 +60,51 @@ Conduct further analysis to determine:
 - Product categories driving high order values
 
 These analyses will help identify the business's most valuable customers and the key drivers of sustainable revenue growth.
+
+
+
+## Monthly Revenue Trend
+
+### Business Question
+
+How has revenue changed over time?
+
+### SQL
+
+```sql
+SELECT
+    DATE_FORMAT(order_purchase_timestamp, '%Y-%m') AS order_month,
+    ROUND(SUM(payment_value), 2) AS revenue
+FROM orders o
+JOIN payments p
+    ON o.order_id = p.order_id
+GROUP BY order_month
+ORDER BY order_month;
+```
+
+### Finding
+
+Monthly revenue increased significantly throughout 2017, growing from approximately $138K in January 2017 to nearly $1.2M in November 2017.
+
+Revenue remained relatively stable throughout most of 2018, fluctuating between approximately $1.0M and $1.16M per month.
+
+A noticeable revenue spike occurred in November 2017, followed by elevated sales in December 2017.
+
+### Business Insight
+
+The company experienced rapid growth throughout 2017 before reaching a more mature and stable revenue level in 2018.
+
+The sharp increase in revenue during November and December suggests seasonal purchasing behavior, likely driven by holiday shopping periods and promotional events.
+
+The stabilization of revenue during 2018 indicates that the business may have transitioned from a high-growth phase into a more mature operating stage where customer retention and operational efficiency become increasingly important drivers of future growth.
+
+### Recommendation
+
+Investigate the drivers behind the 2017 growth period by analyzing:
+
+- Customer acquisition trends
+- Product category performance
+- Geographic expansion
+- Repeat customer behavior
+
+Additionally, analyze seasonal sales patterns and promotional effectiveness to determine whether holiday-driven growth opportunities can be replicated in future periods.
