@@ -28,3 +28,8 @@ JOIN payments p
     ON o.order_id = p.order_id
 GROUP BY order_month
 ORDER BY order_month;
+
+
+
+-- QUESTION 6
+-- TOP PRODUCT CATEGORIES BY REVENUE
